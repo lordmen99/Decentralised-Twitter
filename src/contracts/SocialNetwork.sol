@@ -8,14 +8,20 @@ contract SocialNetwork{
         uint id;
         string content;
         uint tipAmount;
-        address author;    
+        address payable author;    
     }
     mapping(uint => Post) public posts;
     event PostCreated(
         uint id,
         string content,
         uint tipAmount,
-        address author
+        address payable author
+    );
+    event PostTipped(
+        uint id,
+        string content,
+        uint tipAmount,
+        address payable author
     );
 
     constructor() public {
@@ -31,6 +37,23 @@ contract SocialNetwork{
         posts[postCount] = Post(postCount,_content,0,msg.sender);
         // Trigger the event
         emit PostCreated(postCount,_content,0,msg.sender);
+
+    }
+
+    function tipPost(uint _id) public payable{
+        require(_id > 0 && _id <= postCount);
+        // fetch the post
+        Post memory post = posts[_id];
+        // fetch the author
+        address payable _author = post.author;
+        // pay the author
+        address(_author).transfer(msg.value);
+        // increment the tip
+        post.tipAmount = post.tipAmount + msg.value;
+        // update the post
+        posts[_id]=post;
+        // trigger an event
+        emit PostTipped(postCount,post.content,post.tipAmount,_author);
 
     }
 
