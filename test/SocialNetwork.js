@@ -81,5 +81,3 @@ contract('SocialNetwork',([deployer,author,tipper])=>{
         })
     })
 })
-
-

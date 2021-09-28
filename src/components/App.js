@@ -4,14 +4,12 @@ import Navbar from './Navbar'
 import SocialNetwork from '../abis/SocialNetwork.json'
 
 import Main from './Main'
-
-
-
 import './App.css';
 
 class App extends Component {
 
   async componentWillMount(){
+    console.log(SocialNetwork);
     await this.loadWeb3();
     await this.loadBlockchainData();
 

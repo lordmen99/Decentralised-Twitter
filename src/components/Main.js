@@ -27,11 +27,6 @@ class Main extends Component{
                         <button type="submit" className="btn btn-primary btn-block">Share</button>
                     </form>
                     <p>&nbsp;</p>
-
-
-
-
-
                   {
                     this.props.posts.map((post,key)=>{
                       return(
