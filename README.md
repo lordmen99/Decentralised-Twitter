@@ -12,7 +12,15 @@ All the social data is centralized. MNCs own massive amounts of such data. The i
 
 1. Solidity
 2. ReactJS
-2. Web3
+3. Web3
+3. Ganache 
+
+## How to run
+
+1. Clone the repo.
+2. In the root folder, run `truffle compile` to compile the smart contracts.
+3. In the same folder, run `truffle migrate --reset` to get the artifacts of the contract.
+4. To run the server, run `npm start` and connect Metamask wallet to local Ganache blockchain.
 
 
 
